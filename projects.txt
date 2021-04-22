@@ -1,0 +1,4 @@
+Project Number: 1 ,Project Name: kyle ,Building Type: house ,Address: 300 road ,ERF number: 2332 ,Total amount: R1000000.0 ,Total amount paid: R10000.0 ,Deadline date: 30 October 2021,Completed: No,
+Project Number: 2 ,Project Name: benhouses   ,Building Type: house ,Address: 308 second road  , ERF number: 22332  ,Total amount: R10000.0   ,Total amount paid: R10000.0   ,Deadline date: 19 May 2021, Completed: Yes,
+Project Number: 3 ,Project Name: lukehousing, Building Type: housing, Address: 2333 road, ERF number: 33223, Total amount: R1000000.0, Total amount paid: R10000.0,Deadline date: 30 October 2022, Completed: No,
+Project Number: 4 ,Project Name: edTowers , Building Type: Office Towers , Address: 8th street, ERF number: 223322, Total amount: R1.0E7, Total amount paid: R1000000.0,Deadline date: 30 March 2024, Completed: No,
