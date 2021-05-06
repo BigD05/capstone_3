@@ -1,25 +1,52 @@
 package com.company;
 
-public class architect {//creating our variables
-    String name;
-    int phoneNumber;
-    String email;
-    String Address;
+import java.sql.*;
+import java.util.Scanner;
 
-    //invokes our current class constructor
-    public architect(String name, int phoneNUmber, String email, String Address){
-        this.name = name;
-        this.phoneNumber = phoneNUmber;
-        this.email = email;
-        this.Address = Address;
-    }
-    // our method toString() that prints out the details and returns them all
-    public String toString(){
-        String output = "\nArchitect";
-        output += "\nName: " + name;
-        output += "\nPhone number: " + phoneNumber;
-        output += "\nEmail: " + email;
-        output += "\nAddress: " + Address;
-        return output;
+public class architect {//creating our variables
+
+    //this method creates a new Architectc for the project using prepared statements
+    public static void newARCH() throws SQLException {
+
+        // Use username "otheruser", password "swordfish".
+        Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/Poised_PMS?allowPublicKeyRetrieval=true&useSSL=false",
+                "otheruser",
+                "123"
+        );
+        // Create a direct line to the database for running our queries
+        Statement statement = connection.createStatement();
+        ResultSet results;
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("\nPlease enter the name of the architect: ");
+        String archiname = input.nextLine();
+
+
+        System.out.print("Please enter the architect phone number: ");
+        input = new Scanner(System.in);
+        int archiphoneNumber = input.nextInt();
+
+
+        System.out.print("Please enter the email address of the architect: ");
+        input = new Scanner(System.in);
+        String archiemail = input.nextLine();
+
+
+        System.out.print("Please enter the architect address: ");
+        input = new Scanner(System.in);
+        String archiAddress = input.nextLine();
+
+
+        String sql3 = "INSERT INTO Poised_ARCH VALUES(?, ?, ?, ? );";
+        PreparedStatement preparedStatement3 =
+                connection.prepareStatement(sql3);
+        preparedStatement3.setString(1, archiname);
+        preparedStatement3.setInt(2, archiphoneNumber);
+        preparedStatement3.setString(3, archiemail);
+        preparedStatement3.setString(4, archiAddress);
+        preparedStatement3.execute();
+        connection.close();
+
     }
 }

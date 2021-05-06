@@ -1,25 +1,50 @@
 package com.company;
 
-public class contractor {//creating our variables
-    String name;
-    int phoneNumber;
-    String email;
-    String Address;
+import java.sql.*;
+import java.util.Scanner;
 
-    //invokes our current class constructor
-    public contractor(String name, int phoneNUmber, String email, String Address){
-        this.name = name;
-        this.phoneNumber = phoneNUmber;
-        this.email = email;
-        this.Address = Address;
-    }
-    // our method toString() that prints out the details and returns them all
-    public String toString(){
-        String output = "\nContractor";
-        output += "\nName: " + name;
-        output += "\nPhone number: " + phoneNumber;
-        output += "\nEmail: " + email;
-        output += "\nAddress: " + Address;
-        return output;
+public class contractor {//creating our class
+
+    //this method creates a new Projectmanager for the project using prepared statements
+    public static void newPM() throws SQLException {
+        Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/Poised_PMS?allowPublicKeyRetrieval=true&useSSL=false", "otheruser",
+                "123"
+        );
+        // Create a direct line to the database for running our queries
+        Statement statement = connection.createStatement();
+        ResultSet results;
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.print("Please enter the name of the Contractor: ");
+        input = new Scanner(System.in);//asks the user what they should input
+        String contractorname = input.nextLine();                   //reads user variable
+
+
+        System.out.print("Please enter the Contractor phone number: ");
+        input = new Scanner(System.in);
+        int contractorphoneNumber = input.nextInt();
+
+
+        System.out.print("Please enter the email address of the Contractor: ");
+        input = new Scanner(System.in);
+        String contractoremail = input.nextLine();
+
+        System.out.print("Please enter the Contractor address: ");
+        input = new Scanner(System.in);
+        String contractorapddress = input.nextLine();
+
+        String sql4 = "INSERT INTO Poised_PM VALUES(?, ?, ?, ? );";
+        PreparedStatement preparedStatement4 =
+                connection.prepareStatement(sql4);
+        preparedStatement4.setString(1, contractorname);
+        preparedStatement4.setInt(2, contractorphoneNumber);
+        preparedStatement4.setString(3, contractoremail);
+        preparedStatement4.setString(4, contractorapddress);
+        preparedStatement4.execute();
+        connection.close();
+
+
     }
 }
